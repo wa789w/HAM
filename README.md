@@ -1,20 +1,5 @@
 # HAM
 Official implementation of the AAAI'26 paper: "Beyond Single-Point Perturbation: A Hierarchical, Manifold-Aware Approach to Diffusion Attacks".
-### Repository Structure
-```
-repository_root/
-├── ldm/ # LDM framework (from Stable Diffusion) 
-├── ckpt/
-│   └── 512-base-ema.ckpt  # Stable Diffusion weight
-├── imagenet/
-│   ├── images/            # Dataset directory
-│   └── labels.txt         # Image labels                  
-├── output_adv/           # Output directory
-└── main.py               # Main attack script
-
-```
-
----
 
 ## Dataset Setup
 
