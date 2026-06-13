@@ -1,5 +1,3 @@
-<h1 align="center">HAM</h1>
-
 <h2 align="center">
   <a href="https://ojs.aaai.org/index.php/AAAI/article/view/38013">Beyond Single-Point Perturbation: A Hierarchical, Manifold-Aware Approach to Diffusion Attacks</a>
 </h2>
