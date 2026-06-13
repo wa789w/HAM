@@ -48,7 +48,7 @@ The `labels.txt` file should contain one label per line (1-indexed), correspondi
 ## Model Weights
 
 ### Stable Diffusion 2.0 Weights
-HAM uses **Stable Diffusion 2.0 base** as the latent diffusion model. The original Stability AI SD2-base repository on Hugging Face appears to have been removed or made private. You can use the following alternative Hugging Face repository instead, which hosts a backup of the SD2-base model:
+HAM uses **Stable Diffusion 2.0 base**, following prior diffusion-based attack studies. Since the original Stability AI repository is no longer publicly accessible, we provide a compatible Hugging Face backup link:
 
 - Model page: [Manojb/stable-diffusion-2-base](https://huggingface.co/Manojb/stable-diffusion-2-base)
 - Direct checkpoint link: [512-base-ema.ckpt](https://huggingface.co/Manojb/stable-diffusion-2-base/resolve/main/512-base-ema.ckpt)
@@ -59,12 +59,6 @@ Place the checkpoint under:
 ckpt/
 └── 512-base-ema.ckpt
 ```
-
-### Alternative Model Support
-The framework also supports other Stable Diffusion variants. Update the `--ckpt` parameter accordingly:
-- `v2-1_512-ema-pruned.ckpt` for Stable Diffusion 2.1
-- Custom fine-tuned models
-
 ---
 
 ## Usage
