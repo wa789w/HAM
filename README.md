@@ -1,19 +1,26 @@
 # HAM
 Official implementation of the AAAI'26 paper: "Beyond Single-Point Perturbation: A Hierarchical, Manifold-Aware Approach to Diffusion Attacks".
 
+[[Paper]](https://ojs.aaai.org/index.php/AAAI/article/view/38013)
+
+<p align="center">
+  <img src="assets/overview.png" width="95%">
+</p>
+
 ## Dataset Setup
 
 ### 1. ImageNet-Compatible Dataset
-Download the **ImageNet-Compatible** dataset, unzip it, and place it in the `imagenet/images` directory.
+Download the **ImageNet-Compatible** dataset, unzip it, and place the images in the `images` directory.
 
 The dataset should be organized as:
 ```
-imagenet/
-├── images/
-│   ├── 1.png
-│   ├── 2.png
-│   ├── ...
-└── labels.txt  # Contains corresponding ImageNet class labels
+images/
+├── 1.png
+├── 2.png
+├── ...
+└── 1000.png
+
+labels.txt  # Contains corresponding ImageNet class labels
 ```
 
 ### 2. Label Format
@@ -30,9 +37,9 @@ The `labels.txt` file should contain one label per line (1-indexed), correspondi
 ## Model Weights
 
 ### Stable Diffusion 2.0 Weights
-we adopt **Stable Diffusion 2.0** as our latent diffusion model. Please download the model weights:
+We adopt **Stable Diffusion 2.0** as our latent diffusion model. Please download the model weights:
 1. Download the `512-base-ema.ckpt` file
-2. Place it in the `./checkpoints/` folder
+2. Place it in the `./ckpt/` folder
 
 ### Alternative Model Support
 The framework also supports other Stable Diffusion variants. Update the `--ckpt` parameter accordingly:
@@ -60,6 +67,8 @@ python main.py \
   --adv_epsilon 0.035 \
   --target_model resnet50
 ```
+
+The command above reads images from `images/`, labels from `labels.txt`, and the Stable Diffusion checkpoint from `ckpt/512-base-ema.ckpt`.
 
 ## Outputs
 
