@@ -48,10 +48,46 @@ Run the default adversarial attack on all images:
 
 ```bash
 python main.py \
-    --input_dir imagenet/images \
-    --label_file imagenet/labels.txt \
-    --output_dir output_adv \
-    --apply_adv \
-    --enable_grad \
-    --target_model resnet50
+  --input_dir images \
+  --label_file labels.txt \
+  --ckpt ckpt/512-base-ema.ckpt \
+  --output_dir output_adv \
+  --apply_adv \
+  --enable_grad \
+  --start_step 12 \
+  --adv_start 17 \
+  --adv_end 28 \
+  --adv_epsilon 0.035 \
+  --target_model resnet50
+```
+
+## Outputs
+
+The output directory contains:
+
+```text
+output_adv/
+├── adv/
+│   ├── 1.png
+│   ├── 2.png
+│   └── ...
+└── attack_results.csv
+```
+
+`attack_results.csv` records the original label, initial prediction, final prediction, confidence scores, attack success flag, and start step.
+
+## Citation
+
+If you find this project useful, please cite:
+
+```bibtex
+@inproceedings{wang2026beyond,
+  title={Beyond Single-Point Perturbation: A Hierarchical, Manifold-Aware Approach to Diffusion Attacks},
+  author={Wang, Zhijie and Wang, Lin and Wen, Zhenyu and Wang, Cong},
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume={40},
+  number={12},
+  pages={10421--10429},
+  year={2026}
+}
 ```
