@@ -33,7 +33,7 @@ def orthogonal_gradient_projection(adv_grad, denoise_grad):
     
     return orthogonal_component
 
-def adain(cnt_feat, sty_feat, fixed=False):
+def adaLN(cnt_feat, sty_feat, fixed=False):
     cnt_mean = cnt_feat.mean(dim=[0, 2, 3], keepdim=True)
     cnt_std = cnt_feat.std(dim=[0, 2, 3], keepdim=True)
 
@@ -288,7 +288,7 @@ class BackgroundReconstructor:
                         target_idx = current_step + step_idx + 1
                         # print(target_idx)
                         forward_x = reversed_forward_states[target_idx]["latent"]
-                        recon_latents = adain(recon_latents,forward_x)
+                        recon_latents = adaLN(recon_latents,forward_x)
 
                         curr_t = timesteps[i + step_idx].long().expand(batch_size)
                         next_t = timesteps[i + step_idx + 1].long().expand(batch_size)
@@ -306,7 +306,7 @@ class BackgroundReconstructor:
                         if target_idx == 29:
                             last_idx = target_idx + 1
                             forward_x = reversed_forward_states[last_idx]["latent"]
-                            recon_latents = adain(recon_latents,forward_x)
+                            recon_latents = adaLN(recon_latents,forward_x)
 
                         del noise_pred
                         torch.cuda.empty_cache()
@@ -342,7 +342,7 @@ class BackgroundReconstructor:
                         target_idx = current_step + 1
                         print(target_idx)
                         # forward_x = reversed_forward_states[target_idx]["latent"]
-                        # clean_x = adain(clean_x,forward_x)
+                        # clean_x = adaLN(clean_x,forward_x)
                         # # Get the denoising gradient (predicted noise).
                         # ts = step.long().expand(batch_size)
                         # denoise_pred = self.model.apply_model(clean_x, ts, conditioning)
@@ -374,7 +374,7 @@ class BackgroundReconstructor:
             target_idx = current_step + 1
             print(target_idx)
             forward_x = reversed_forward_states[target_idx]["latent"]
-            x = adain(x,forward_x)
+            x = adaLN(x,forward_x)
                         
             with torch.no_grad():
                 e_adv = self.model.apply_model(
@@ -394,7 +394,7 @@ class BackgroundReconstructor:
                     target_idx = current_step + 2
                     print(target_idx)
                     forward_x = reversed_forward_states[target_idx]["latent"]
-                    x = adain(x,forward_x)
+                    x = adaLN(x,forward_x)
                 
                 print(torch.sqrt(1 - a_prev - sigma_t**2).item())
                 del pred_x0, e_t
