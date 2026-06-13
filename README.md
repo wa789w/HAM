@@ -1,5 +1,12 @@
-# HAM
-Official implementation of the AAAI'26 paper: "[Beyond Single-Point Perturbation: A Hierarchical, Manifold-Aware Approach to Diffusion Attacks](https://ojs.aaai.org/index.php/AAAI/article/view/38013)".
+<h1 align="center">HAM</h1>
+
+<h2 align="center">
+  <a href="https://ojs.aaai.org/index.php/AAAI/article/view/38013">Beyond Single-Point Perturbation: A Hierarchical, Manifold-Aware Approach to Diffusion Attacks</a>
+</h2>
+
+<p align="center">
+  <b>Official implementation of the AAAI'26 paper</b>
+</p>
 
 <p align="center">
   <img src="assets/overview.png" width="95%">
@@ -19,7 +26,7 @@ The environment file installs the core PyTorch, Stable Diffusion, and evaluation
 ## Dataset Setup
 
 ### 1. ImageNet-Compatible Dataset
-Download the **ImageNet-Compatible** dataset, unzip it, and place the images in the `images` directory.
+HAM uses 1,000 ImageNet-compatible images stored in the `images` directory.
 
 The dataset should be organized as:
 ```
@@ -32,7 +39,7 @@ images/
 labels.txt  # Contains corresponding ImageNet class labels
 ```
 
-The repository keeps `images/.gitkeep` only as a placeholder. The actual dataset images are not included.
+The default command reads images directly from `images/` and labels from `labels.txt`.
 
 ### 2. Label Format
 The `labels.txt` file should contain one label per line (1-indexed), corresponding to ImageNet class indices:
@@ -59,6 +66,7 @@ Place the checkpoint under:
 ckpt/
 └── 512-base-ema.ckpt
 ```
+
 ---
 
 ## Usage
