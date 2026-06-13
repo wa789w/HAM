@@ -1,11 +1,20 @@
 # HAM
-Official implementation of the AAAI'26 paper: "Beyond Single-Point Perturbation: A Hierarchical, Manifold-Aware Approach to Diffusion Attacks".
-
-[[Paper]](https://ojs.aaai.org/index.php/AAAI/article/view/38013)
+Official implementation of the AAAI'26 paper: "[Beyond Single-Point Perturbation: A Hierarchical, Manifold-Aware Approach to Diffusion Attacks](https://ojs.aaai.org/index.php/AAAI/article/view/38013)".
 
 <p align="center">
   <img src="assets/overview.png" width="95%">
 </p>
+
+## Installation
+
+Create the environment with Conda:
+
+```bash
+conda env create -f environment.yml
+conda activate HAM
+```
+
+The environment file installs the core PyTorch, Stable Diffusion, and evaluation dependencies required by HAM.
 
 ## Dataset Setup
 
@@ -22,6 +31,8 @@ images/
 
 labels.txt  # Contains corresponding ImageNet class labels
 ```
+
+The repository keeps `images/.gitkeep` only as a placeholder. The actual dataset images are not included.
 
 ### 2. Label Format
 The `labels.txt` file should contain one label per line (1-indexed), corresponding to ImageNet class indices:
@@ -40,6 +51,8 @@ The `labels.txt` file should contain one label per line (1-indexed), correspondi
 We adopt **Stable Diffusion 2.0** as our latent diffusion model. Please download the model weights:
 1. Download the `512-base-ema.ckpt` file
 2. Place it in the `./ckpt/` folder
+
+The repository keeps `ckpt/.gitkeep` only as a placeholder. Model checkpoints are not included.
 
 ### Alternative Model Support
 The framework also supports other Stable Diffusion variants. Update the `--ckpt` parameter accordingly:

@@ -2,10 +2,12 @@ __pycache__/
 *.pyc
 .venv/
 .env/
-ckpt/
-checkpoints/
-images/
-imagenet/images/
+ckpt/*
+!ckpt/.gitkeep
+checkpoints/*
+!checkpoints/.gitkeep
+imagenet/images/*
+!imagenet/images/.gitkeep
 output*/
 *.log
 .ipynb_checkpoints/
